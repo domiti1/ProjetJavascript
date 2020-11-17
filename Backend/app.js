@@ -13,7 +13,7 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+//test pull
 app.use("/api/users", usersRouter);
 // all the routes given in the filmRouter shall be secure : call the authorize middleware
 app.use("/api/questions", authorize, questionRouter);
