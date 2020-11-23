@@ -46,6 +46,29 @@ line-height: 50%;
 .navBar_colors{
   background-color: #f6ebf7;
 }
+#div_orange_smoother{
+  background-color: burlywood;
+}
+#div_vert{
+  background-color:#99e699;
+}
+#div_violet{
+  background-color:#ff6699;
+}
+#div_blue{
+  background-color:#6699ff;
+}
+#div_grey{
+  background-color:#669999;
+}
+#div_brown{
+  background-color:#996633;
+}
+
+#div_red{
+  background-color:#ff6666;
+}
+
 
 /***************************************************************************************
 *    Title: Moving Letters
