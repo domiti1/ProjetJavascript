@@ -1,10 +1,13 @@
 let homePage = `
-<div class="homePage_text mt-5">
+
 <div>
-<h1 class="ml2">Bievenue sur culture G</h1>
+<div class="homePage_text mt-5">
+<h1 class="ml2 homePage_text">Bienvenue sur Quizz'sait</h1>
+</div>
 </div>
 <div>
-<h1 class="ml2">Cliquez pour continuer</h1>
+<div class="homePage_text_2 mt-5">
+<h1 class="ml2 homePage_text_2">Cliquez pour continuer</h1>
 </div>
 </div>
 `;

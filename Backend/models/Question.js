@@ -8,11 +8,11 @@ class question {
     this.id = question.nextquestionId();
 	this.title=data.duration;
 	this.categorie = data.duration;
-    this.reponse1 = data.duration;
+  this.reponse1 = data.duration;
 	this.reponse2 = data.duration;
 	this.reponse3 = data.duration;
 	this.reponse4 = data.duration;
-    this.reponseCorrecte = data.budget;
+  this.reponseCorrecte = data.budget;
     // add protocole if needed to the link
     if (data.link && !data.link.match(/^(http|https)/))
       data.link = "http://" + data.link;

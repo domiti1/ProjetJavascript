@@ -24,7 +24,29 @@ input:valid {
 text-align: center;
 vertical-align: middle;
 line-height: 50%; 
+font-size: xx-large;
+color: #ffea80;
+
 }
+
+.accueilPage_text{
+  color: #ffea80;
+}
+
+
+.navBar_text{
+  color: #ffea80;
+}
+
+
+.homePage_text_2{
+  text-align: center;
+  vertical-align: middle;
+  line-height: 50%; 
+  font-size: large;
+  color: #decb6d;
+  
+  }
 .right {
   position: absolute;
   right: 0px;
@@ -35,16 +57,26 @@ line-height: 50%;
    /* or overflow:auto; if you want scrollbars */
 }
 #allpage{
-  background-color: #f1d0f5;
+  background-color: #485f66;
+  font-family: 'Lobster', cursive;
 }
 #div_violet_darker{
-  background-color:#c59fc9 ;
+  background-color:#cfbe6d ;
+}
+
+#text_white{
+  color:snow;
+  font-size: larger;
+}
+
+#button_title{
+  font-size: xx-large;
 }
 #div_violet_smoother{
-  background-color: #f6ebf7;
+  background-color: #cfbe6d;
 }
 .navBar_colors{
-  background-color: #f6ebf7;
+  background-color: #6a8e99;
 }
 #div_orange_smoother{
   background-color: burlywood;
@@ -95,7 +127,7 @@ html {
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Lobster', cursive;;
   height: 100vh;
 }
 
@@ -114,6 +146,27 @@ h2 {
   display:inline-block;
   margin: 40px 8px 10px 8px; 
   color: #cccccc;
+}
+
+.ml10 {
+  position: relative;
+  font-weight: 900;
+  font-size: 4em;
+}
+
+.ml10 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.2em;
+  padding-right: 0.05em;
+  padding-bottom: 0.1em;
+  overflow: hidden;
+}
+
+.ml10 .letter {
+  display: inline-block;
+  line-height: 1em;
+  transform-origin: 0 0;
 }
 
 

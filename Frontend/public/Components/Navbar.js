@@ -7,9 +7,9 @@ const Navbar = () => {
   if (user) {
     navbar = `<nav class="navbar navbar-expand-lg navbar-light navBar_colors mb-2" id="navBar">
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link" href="/" class="right">Accueil</a>
-      <a class="nav-item nav-link" href="#" class="right">Logout ${user.username}</a>
+    <div class="navbar-nav" id="navBar_text">
+      <a class="nav-item nav-link" href="/">Accueil</a>
+      <a class="nav-item nav-link" href="#">Logout ${user.username}</a>
       
     </div>
   </div>
