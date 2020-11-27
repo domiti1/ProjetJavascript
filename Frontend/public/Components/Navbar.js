@@ -9,7 +9,9 @@ const Navbar = () => {
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav" id="navBar_text">
       <a class="nav-item nav-link" href="/">Accueil</a>
-      <a class="nav-item nav-link" href="#">Logout ${user.username}</a>
+      <a class="nav-item nav-link" href="#" data-uri="/logout">Logout</a>
+      <a class="nav-item nav-link disabled" href="#">${user.username}</a>
+
       
     </div>
   </div>
