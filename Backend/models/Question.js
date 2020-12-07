@@ -3,16 +3,16 @@ var escape = require("escape-html");
 
 const FILE_PATH = __dirname + "/../data/questions.json";
 
-class question {
+class Question {
   constructor(data) {
-    this.id = question.nextquestionId();
-	this.title=data.duration;
-	this.categorie = data.duration;
-  this.reponse1 = data.duration;
-	this.reponse2 = data.duration;
-	this.reponse3 = data.duration;
-	this.reponse4 = data.duration;
-  this.reponseCorrecte = data.budget;
+    this.id = Question.nextquestionId();
+    this.title=data.duration;
+    this.categorie = data.duration;
+    this.reponse1 = data.duration;
+    this.reponse2 = data.duration;
+    this.reponse3 = data.duration;
+    this.reponse4 = data.duration;
+    this.reponseCorrecte = data.budget;
     // add protocole if needed to the link
     if (data.link && !data.link.match(/^(http|https)/))
       data.link = "http://" + data.link;
@@ -83,4 +83,4 @@ function savequestionsListToFile(filePath, questionList) {
   fs.writeFileSync(filePath, data);
 }
 
-module.exports = question;
+module.exports = Question;

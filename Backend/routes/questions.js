@@ -6,7 +6,7 @@ let Question = require("../models/Question.js");
 
 // Create a new question: POST /api/questions/
 router.post("/", function (req, res) {  
-  let newquestion = new question(req.body);
+  let newquestion = new Question(req.body);
   newquestion.save();
   return res.json(newquestion);
 });

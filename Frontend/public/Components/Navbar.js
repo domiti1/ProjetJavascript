@@ -23,8 +23,8 @@ const Navbar = () => {
         
        
         <a class="nav-item nav-link" href="/" class="right">Accueil</a>
-        <a class="nav-item nav-link" href="/login" class="right">login</a>
-        <a class="nav-item nav-link" href="/login" class="right">register</a>
+        <a class="nav-item nav-link" href="/login" class="right">Login</a>
+        <a class="nav-item nav-link" href="/login" class="right">Register</a>
         
       </div>
     </div>
