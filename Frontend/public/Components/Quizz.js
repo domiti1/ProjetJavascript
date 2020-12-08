@@ -52,15 +52,16 @@ let quizz = `<div class="container">
     </div>
     </div>`
 
-let page = document.querySelector("#page");
+let page = document.querySelector("#allpage");
+
+
+
 
 const question = document.querySelector('#question');
 const choices = Array.from(document.querySelectorAll('.choice-text'));
 const progressText = document.querySelector('#progressText');
 const scoreText = document.querySelector('#score');
-const progressBarFull = document.querySelector('#progressBarFull');
-
-
+const progressBarFull = document.querySelector('#progressBarFull'); 
 
 let currentQuestion = {};
 let acceptingAnswers = true;
@@ -96,9 +97,9 @@ const MAX_QUESTIONS = 4;
 
 
 const Quizz = () => {
-  const user = getUserSessionData();
+  /**const user = getUserSessionData();
   if (!user) RedirectUrl("/error", "Resource not authorized. Please login.");
-
+**/
   /** 
   fetch(API_URL + "questions", {
     method: "GET",
@@ -127,8 +128,10 @@ const Quizz = () => {
     })
     .catch((err) => onError(err));
     */
-   let page = document.querySelector("#page");
-   return (page.innerHTML = quizz);
+  
+   page.innerHTML = quizz;
+    startGame();
+   
   
 };
 

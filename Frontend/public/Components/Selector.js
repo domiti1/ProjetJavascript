@@ -28,7 +28,7 @@ let selector =
                                 
                                 
                                         <div class="m-2">
-                                        <button type="button" class="btn btn-secondary btn-lg" id="div_vert" onclick="window.location.href='/quizz/theme=geographie'">Géographie</button>
+                                        <button type="button" class="btn btn-secondary btn-lg" id="div_vert" onclick="window.location.href='/quizz'">Géographie</button>
                                         </div>
                             
                             
