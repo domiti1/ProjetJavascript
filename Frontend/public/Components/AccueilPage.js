@@ -34,7 +34,7 @@ const AccueilPage = () => {
             <div class="col m-1 border border-5 border-dark rounded text-center" id="div_violet_darker">
             <div class="m-3" id="button_title">Mes scores</div>
             </div>
-                <div class="mb-2 text-center" id="text_white">Vous devez d'abord vous connecter pour voir vos scores</div>
+                <div class="mb-2 text-center" id="recentScore"></div>
             </div>
         
         </div>
@@ -72,7 +72,8 @@ const AccueilPage = () => {
     }
  
     page.innerHTML = accueilPage;
-
+    let recentScore = document.querySelector('#recentScore');
+    recentScore.innerText = localStorage.getItem('recentScore');
     /***************************************************************************************
     *    Title: Moving Letters
     *    Author: @tobiasahlin
@@ -98,5 +99,6 @@ const AccueilPage = () => {
        delay: 1000
      });
     }
+    /*************************************************************************************** */
 
 export default AccueilPage;
