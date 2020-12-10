@@ -77,9 +77,12 @@ const Quizz = () => {
   document.querySelector("#page_home").classList.remove('full-size');
   let page = document.querySelector("#page");
   page.innerHTML = quizz;
+  
+  
   let cat = localStorage.getItem('cat')
   
-  getListCat(cat,questions);
+  
+  getListCat(cat);
   
   
   question = document.querySelector('#question');
@@ -92,7 +95,7 @@ const Quizz = () => {
    
 };
 
-function getListCat(categorie,questions){
+function getListCat(categorie){
     const user = getUserSessionData();
     if (!user) RedirectUrl("/error", "Resource not authorized. Please login.");
     let cat = localStorage.getItem('cat');
@@ -110,14 +113,15 @@ function getListCat(categorie,questions){
       }
       return response.json();
     })
-    .then((data) => toQuestionList(data,questions))
+    .then((data) => toQuestionList(data))
     .catch((err) => onError(err));
   };
 
   //QUESTION ICI
   //Récuperer le res.json(questionFound) qui est un tableau et l'assigner au tableau questions
-  const toQuestionList = (data,questions) => {
+  const toQuestionList = (data) => {
   
+    questions.push(data);
     for (var i = 0; i < data.length; i++) { 
       
           questions.push(data[i]);
