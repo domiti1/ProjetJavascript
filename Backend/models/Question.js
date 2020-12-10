@@ -1,5 +1,5 @@
 "use strict";
-var escape = require("escape-html");
+
 
 const FILE_PATH = __dirname + "/../data/questions.json";
 
@@ -53,6 +53,24 @@ class Question {
 
   static get list() {
     return getquestionsListFromFile(FILE_PATH);
+  }
+
+
+  static getListFromCat(categorie){
+    let list = [];
+    list = getquestionsListFromFile(FILE_PATH);
+    
+    let catList = [];
+    for (var i = 0; i < list.length; i++) { 
+      
+      if(list[i].categorie == categorie){
+        catList.push(list[i]);
+      }
+     
+    }
+    
+    
+    return catList;
   }
 
   static delete(id) {

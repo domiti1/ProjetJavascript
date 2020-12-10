@@ -28,7 +28,7 @@ let selector =
                                 
                                 
                                         <div class="m-2">
-                                        <button type="button" class="btn btn-secondary btn-lg" id="div_vert" onclick="window.location.href='/quizz'">Géographie</button>
+                                        <button type="button" class="btn btn-secondary btn-lg" id="div_vert" onclick="window.location.href='/quizz';localStorage.setItem('cat','Geographie')">Géographie</button>
                                         </div>
                             
                             
@@ -65,7 +65,7 @@ let selector =
                             
                             
                             <div class="m-2">
-                            <button type="button" class="btn btn-secondary btn-lg" id="div_grey" onclick="window.location.href='/quizz/theme=techno'">Technologie</button>
+                            <button type="button" class="btn btn-secondary btn-lg" id="div_grey" onclick="window.location.href='/quizz';localStorage.setItem('cat','techno')">Technologie</button>
                             </div>
                     
                 
