@@ -65,8 +65,8 @@ let quizz = `<div class="container">
     let score = 0;
     let questionCounter = 0;
     let availableQuestions = [];
-
     let questions = [];
+  
   
   const SCORE_QUESTION = 100;
   const MAX_QUESTIONS = 4;
@@ -78,7 +78,8 @@ const Quizz = () => {
   let page = document.querySelector("#page");
   page.innerHTML = quizz;
   let cat = localStorage.getItem('cat')
-  getListCat(cat);
+  
+  getListCat(cat,questions);
   
   
   question = document.querySelector('#question');
@@ -91,7 +92,7 @@ const Quizz = () => {
    
 };
 
-function getListCat(categorie){
+function getListCat(categorie,questions){
     const user = getUserSessionData();
     if (!user) RedirectUrl("/error", "Resource not authorized. Please login.");
     let cat = localStorage.getItem('cat');
@@ -102,27 +103,27 @@ function getListCat(categorie){
         },
       })
     .then((response) => {
-      if (!response.ok)
+      if (!response.ok){
         throw new Error(
           "Error code : " + response.status + " : " + response.statusText
         );
+      }
       return response.json();
     })
-    .then((data) => toQuestionList(data))
+    .then((data) => toQuestionList(data,questions))
     .catch((err) => onError(err));
   };
 
   //QUESTION ICI
   //Récuperer le res.json(questionFound) qui est un tableau et l'assigner au tableau questions
-  const toQuestionList = (data) => {
-    var_dump(data.length);
+  const toQuestionList = (data,questions) => {
+  
     for (var i = 0; i < data.length; i++) { 
       
           questions.push(data[i]);
 
       }
-    page.innerText=questions;
-      
+     
   }
 
 // main funtion 
@@ -136,8 +137,8 @@ function startGame(question,choices,progressText,scoreText,progressBarFull){
 function getNewQuestion(){
   if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS){
       localStorage.setItem('recentScore',score);
-      window.alert("Féliciation vous avez obtenu un score de "+localStorage.getItem('recentScore'));
-      return window.window.location.assign("./accueil");
+      //window.alert("Féliciation vous avez obtenu un score de "+localStorage.getItem('recentScore'));
+      return //window.window.location.assign("./accueil");
   }
 
   progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
@@ -197,5 +198,18 @@ function incrementScore(num){
   score = score + num;
   scoreText.innerText = score;
 }
+
+
+const onError = (err) => {
+  console.error("QuizzPage::onError:", err);
+  let errorMessage = "Error";
+  if (err.message) {
+    if (err.message.includes("401"))
+      errorMessage =
+        "Unauthorized access to this ressource : you must first login.";
+    else errorMessage = err.message;
+  }
+  RedirectUrl("/error", errorMessage);
+};
 
 export default Quizz;
