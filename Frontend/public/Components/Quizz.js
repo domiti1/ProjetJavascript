@@ -91,7 +91,8 @@ const Quizz = () => {
   scoreText = document.querySelector('#score');
   progressBarFull = document.querySelector('#progressBarFull');
     
- startGame(question,choices,progressText,scoreText,progressBarFull);
+ startGame();
+ getNewQuestion();
    
 };
 
@@ -131,11 +132,11 @@ function getListCat(categorie){
   }
 
 // main funtion 
-function startGame(question,choices,progressText,scoreText,progressBarFull){
+function startGame(){
   questionCounter = 1;
   score = 0;
   availableQuestions = [...questions];
-  getNewQuestion(question,choices,progressText,scoreText,progressBarFull);
+  getNewQuestion();
 }
 
 function getNewQuestion(){
