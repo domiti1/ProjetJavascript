@@ -90,9 +90,6 @@ const Quizz = () => {
   progressText = document.querySelector('#progressText');
   scoreText = document.querySelector('#score');
   progressBarFull = document.querySelector('#progressBarFull');
-    
- startGame();
- getNewQuestion();
    
 };
 
@@ -102,6 +99,7 @@ function getListCat(categorie){
     let cat = localStorage.getItem('cat');
     fetch(API_URL + "questions/"+ cat, {
         method: "GET",
+        async:false,
         headers: {
           Authorization: user.token,
         },
@@ -115,7 +113,8 @@ function getListCat(categorie){
       return response.json();
     })
     .then((data) => toQuestionList(data))
-    .catch((err) => onError(err));
+    .catch((err) => onError(err))
+    .then(startGame)
   };
 
   //QUESTION ICI
@@ -128,7 +127,7 @@ function getListCat(categorie){
           questions.push(data[i]);
 
       }
-     
+    return questions;
   }
 
 // main funtion 
@@ -142,8 +141,9 @@ function startGame(){
 function getNewQuestion(){
   if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS){
       localStorage.setItem('recentScore',score);
-      //window.alert("Féliciation vous avez obtenu un score de "+localStorage.getItem('recentScore'));
-      return //window.window.location.assign("./accueil");
+      trierScore(score);
+      window.alert("Féliciation vous avez obtenu un score de "+localStorage.getItem('recentScore'));
+      return window.window.location.assign("./accueil");
   }
 
   progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
@@ -202,6 +202,34 @@ choices.forEach(choice =>{
 function incrementScore(num){
   score = score + num;
   scoreText.innerText = score;
+}
+
+//function for order 3 first score of user
+function trierScore(score){
+  let premierMeilleurScore = localStorage.getItem('scoreUn');
+  let secondMeilleurScore = localStorage.getItem('scoreDeux');
+  let troisiemeMeilleurScore = localStorage.getItem('scoreTrois');
+  //si plus petit on fait rien
+  if(troisiemeMeilleurScore>score){
+    return;
+  }
+  //Si entre 3 et 2 : il prend la place du troisieme
+  else if(score>troisiemeMeilleurScore && score<secondMeilleurScore){
+    localStorage.setItem('scoreTrois',score);
+    return;
+  //Si entre 1 et 2 il prend la place de 2 et 2 prend la place de 3
+  }else if(score>secondMeilleurScore && score<premierMeilleurScore){
+    localStorage.setItem('scoreDeux',score);
+    localStorage.setItem('scoreTrois',secondMeilleurScore);
+    return;
+  //Si plus grand de 1 : 1 prend la place de 2 et 2 prend la place de 3
+  }else if(score>premierMeilleurScore){
+    localStorage.setItem('scoreUn',score);
+    localStorage.setItem('scoreDeux',premierMeilleurScore);
+    localStorage.setItem('scoreTrois',secondMeilleurScore);
+    return;
+  }
+ 
 }
 
 

@@ -16,7 +16,7 @@ let selector =
                                 
                                 
                                         <div class="m-2">
-                                        <button type="button" class="btn btn-secondary btn-lg" id="div_orange_smoother" onclick="window.location.href='/quizz/theme=anime'">Anime/Manga</button>
+                                        <button type="button" class="btn btn-secondary btn-lg" id="div_orange_smoother" onclick="window.location.href='/quizz';localStorage.setItem('cat','Anime')">Anime/Manga</button>
                                         </div>
                             
                             
@@ -41,7 +41,7 @@ let selector =
                                 
                                 
                                         <div class="m-2">
-                                        <button type="button" class="btn btn-secondary btn-lg" id="div_violet" onclick="window.location.href='/quizz/theme=histoire'">Histoire</button>
+                                        <button type="button" class="btn btn-secondary btn-lg" id="div_violet" onclick="window.location.href='/quizz';localStorage.setItem('cat','Histoire')">Histoire</button>
                                         </div>
                             
                             
@@ -54,45 +54,26 @@ let selector =
                             
                             
                                     <div class="m-2">
-                                    <button type="button" class="btn btn-secondary btn-lg" id="div_blue" onclick="window.location.href='/quizz/theme=art'">Art/Littérature</button>
+                                    <button type="button" class="btn btn-secondary btn-lg" id="div_blue" onclick="window.location.href='/quizz';localStorage.setItem('cat','Art')">Art/Littérature</button>
                                     </div>
                         
                         
                             
                             </div>
-
+                            </div>
+                            <div class="mt-2">
                             <div class="form-check">
                             
                             
                             <div class="m-2">
-                            <button type="button" class="btn btn-secondary btn-lg" id="div_grey" onclick="window.location.href='/quizz';localStorage.setItem('cat','techno')">Technologie</button>
+                            <button type="button" class="btn btn-secondary btn-lg" id="div_grey" onclick="window.location.href='/quizz';localStorage.setItem('cat','Technologie')">Technologie</button>
                             </div>
                     
                 
                         
                             </div>
                         </div>
-                        <div class="form-check">
-                            
-                            
-                            <div class="m-2">
-                            <button type="button" class="btn btn-secondary btn-lg" id="div_red" onclick="window.location.href='/quizz/theme=science'">Sciences</button>
-                            </div>
-                    
-                
-                        
-                            </div>
-                            <div class="form-check">
-                            
-                            
-                            <div class="m-2">
-                            <button type="button" class="btn btn-secondary btn-lg" id="div_brown" onclick="window.location.href='/quizz/theme=musique'">Musique</button>
-                            </div>
-                    
-                
-                        
-                            </div>
-
+                       
 
             </div>
                 
