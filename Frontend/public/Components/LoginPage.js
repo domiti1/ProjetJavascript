@@ -7,23 +7,23 @@ import Navbar from "./Navbar.js";
 import { API_URL } from "../utils/server.js";
 
 let loginPage = `
-<div class="container mt-5">
+<div class="container mt-5 ">
   <div class="wrapper fadeInDown">
-    <div id="formContent">
+    <div id="formContent navBar_colors">
     <div class="fadeIn first mt-3">
       <h3>Connexion</h3>
     </div>
         <form>
         <div class="form-group mt-3 fadeIn second">
           <p>Email</p>
-          <input class="form-control" id="email" type="text" name="email" placeholder="Enter your email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\.-]?\\w+)*(\\.\\w{2,4})+\$" />
+          <input class="form-control" id="email" type="text" name="email" placeholder="Entrez votre email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\.-]?\\w+)*(\\.\\w{2,4})+\$" />
         </div>
         <div class="form-group fadeIn third">
           <p><label for="password">Password</label></p>
-          <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" required="" pattern=".*[A-Z]+.*" />
+          <input class="form-control" id="password" type="password" name="password" placeholder="Enter votre mot de passe" required="" pattern=".*[A-Z]+.*" />
         </div>
         <div class="alert alert-danger m-2 d-none" id="messageBoard"></div>
-        <button class="btn btn-primary mt-2 fadeIn third" id="btn" type="submit">Submit</button>
+        <button class="btn btn-primary mt-2 fadeIn third" id="btn" type="submit">Se connecter</button>
         <!-- Create an alert component with bootstrap that is not displayed by default-->
         
         </form>

@@ -23,7 +23,9 @@ const AccueilPage = () => {
             <div class="col m-1 border border-5 border-dark rounded text-center" id="div_violet_darker">
             <div class="m-3" id="button_title">Mes meilleurs scores</div>
             </div>
-                <div class="mb-2 text-center" id="recentScore"></div>
+                <div class="mb-2 text-center"><h4 id="score1"></h4></div>
+                <div class="mb-2 text-center"><h4 id="score2"></h4></div>
+                <div class="mb-2 text-center"><h4 id="score3"></h4></div>
             </div>
         
         </div>
@@ -31,28 +33,22 @@ const AccueilPage = () => {
         accueilPage=`<div class="container">
         <div class="row mt-3">
     
-        
-            <div class="col mr-5">
-
-                <div class="col m-3 border border-5 border-dark rounded text-center" id="div_violet_darker">
-                <div class="m2"><h5><br>Top Score</h5><br></div>
-                </div>
-                <div class="mb-2 text-center" id="text_white">Nathan 139</div>
-                <div class="mb-2 text-center">Didier 130</div>
-                <div class="mb-2 text-center">Arnaud 129</div>
-            </div>
-
-            <div class="col mt-5 border border-5 border-secondary rounded" id="div_violet_smoother">
-                <div class="m-5"><h5>Vous devez vous connecter pour commencer un Quizz</h5></div>
+            <div class="col m-4">
+            <h1 class="ml10 accueilPage_text">
+            <span class="text-wrapper">
+                <span class="letters">Commencez votre <br> Quizz'sait !</span>
+            </span>
+            <h4>Vous devez d'abord vous connecter</h4>
+            </h1>
                 <div class="m-5 text-center"><button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='/login'">Se connecter</button></div>
+            
             </div>
+            <div class="col m-5">
 
-            <div class="col mr-5">
-
-                <div class="col m-3 text-center border border-5 border-dark rounded" id="div_violet_darker">
-                <div class="m2"><h5><br>Mes scores</h5><br></div>
-                </div>
-                <div class="mb-2 text-center">Vous devez d'abord vous connecter pour voir vos scores</div>
+            <div class="col m-1 border border-5 border-dark rounded text-center" id="div_violet_darker">
+            <div class="m-3" id="button_title">Mes meilleurs scores</div>
+            </div>
+                <div class="mb-2 text-center" id="recentScore"><h4>Vous devez d'abord vous connecter avant d'afficher vos scores</h4></div>
             </div>
         
         </div>
@@ -61,9 +57,12 @@ const AccueilPage = () => {
     }
  
     page.innerHTML = accueilPage;
-    let recentScore = document.querySelector('#recentScore');
-    
-    recentScore.innerText = user.score1;
+    let score1 = document.querySelector('#score1');
+    let score2 = document.querySelector('#score2');
+    let score3 = document.querySelector('#score3');
+    score1.innerText = "1.  " + user.score1;
+    score2.innerText = "2.  " + user.score2;
+    score3.innerText = "3.  " + user.score3;
     /***************************************************************************************
     *    Title: Moving Letters
     *    Author: @tobiasahlin

@@ -9,21 +9,21 @@ By default, all escape sequences in a template literal are ignored.*/
 let registerPage = `
 <div class="container mt-5">
   <div class="wrapper fadeInDown">
-    <div id="formContent">
+    <div id="formContent navBar_colors">
       <div class="fadeIn first mt-3">
       <h3>Inscription</h3>
       </div>
         <form>
         <div class="form-group mt-3 fadeIn second">
           <p>Email</p>
-          <input class="form-control" id="email" type="text" name="email" placeholder="Enter your email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+\$" />
+          <input class="form-control" id="email" type="text" name="email" placeholder="Entrez votre adresse email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+\$" />
         </div>
         <div class="form-group fadeIn third">
-          <p><label for="password">Password</label></p>
-          <input class="form-control" id="password" type="password" name="password" placeholder="Enter your password" required="" pattern=".*[A-Z]+.*" />
+          <p><label for="password">Mot de passe</label></p>
+          <input class="form-control" id="password" type="password" name="password" placeholder="Entrez votre mot de passe" required="" pattern=".*[A-Z]+.*" />
         </div>
         <div class="alert alert-danger mt-2 d-none" id="messageBoard"></div><span id="errorMessage"></span>
-        <button class="btn btn-primary m-2 fadeIn third" id="btn" type="submit">Submit</button>
+        <button class="btn btn-primary m-2 fadeIn third" id="btn" type="submit">Je m'inscris !</button>
         <!-- Create an alert component with bootstrap that is not displayed by default-->
         
         </form>

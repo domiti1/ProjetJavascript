@@ -22,7 +22,7 @@ const Navbar = () => {
   </div>
   </nav>`;
   } else {
-    navbar = `<nav class="navbar navbar-expand-lg navbar-light bg-light mb-2" id="navBar">
+    navbar = `<nav class="navbar navbar-expand-lg navbar-light navBar_colors mb-2" id="navBar">
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         
