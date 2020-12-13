@@ -5,10 +5,13 @@ const myPlaintextPassword = "145OkyayNo668Pass";
 const FILE_PATH = __dirname + "/../data/users.json";
 
 class User {
-  constructor(username, email, password) {
+  constructor(username, email, password, score1, score2, score3) {
     this.username = username;
     this.email = email;
     this.password = password;
+    this.score1 = score1;
+    this.score2 = score2;
+    this.score3 = score3;
   }
 
   /* return a promise with async / await */
@@ -20,6 +23,9 @@ class User {
       username: this.email,
       email: this.email,
       password: hashedPassword,
+      score1: this.score1,
+      score2: this.score2,
+      score3: this.score3,
     });
     saveUserListToFile(FILE_PATH, userList);
     return true;
@@ -57,6 +63,19 @@ class User {
       if (userList[index].username === username) return userList[index];
     }
     return;
+  }
+
+  static updateScoreUser(username, score1, score2, score3){
+    let userList = getUserListFromFile(FILE_PATH);
+    for(let index = 0; index < userList.length; index++) {
+      if (userList[index].username === username) {
+        userList[index].score1 = score1;
+        userList[index].score2 = score2;
+        userList[index].score3 = score3;
+      }
+    }
+    saveUserListToFile(FILE_PATH, userList);
+    return userList;
   }
 }
 

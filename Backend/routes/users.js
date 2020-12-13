@@ -13,7 +13,7 @@ router.get("/", authorize, function (req, res, next) {
 
 /* POST user data for authentication */
 router.post("/login", function (req, res, next) {
-  let user = new User(req.body.email, req.body.email, req.body.password);
+  let user = new User(req.body.email, req.body.email, req.body.password, 0, 0, 0);
   console.log("POST users/login:", User.list);
   user.checkCredentials(req.body.email, req.body.password).then((match) => {
     if (match) {
@@ -27,7 +27,8 @@ router.post("/login", function (req, res, next) {
             return res.status(500).send(err.message);
           }
           console.log("POST users/ token:", token);
-          return res.json({ username: user.username, token });
+          user = User.getUserFromList(user.username);
+          return res.json({ username: user.username, token: token, score1: user.score1, score2: user.score2, score3: user.score3});
         }
       );
     } else {
@@ -42,7 +43,7 @@ router.post("/", function (req, res, next) {
   console.log("POST users/", User.list);
   console.log("email:", req.body.email);
   if (User.isUser(req.body.email)) return res.status(409).end();
-  let newUser = new User(req.body.email, req.body.email, req.body.password);
+  let newUser = new User(req.body.email, req.body.email, req.body.password,0 , 0, 0);
   newUser.save().then(() => {
     console.log("afterRegisterOp:", User.list);
     jwt.sign(
@@ -55,7 +56,7 @@ router.post("/", function (req, res, next) {
           return res.status(500).send(err.message);
         }
         console.log("POST users/ token:", token);
-        return res.json({ username: newUser.username, token });
+        return res.json({ username: user.username, token: token, score1: user.score1, score2: user.score2, score3: user.score3});
       }
     );
     /* Example on how to create and use your own asynchronous function (signAsynchronous())
@@ -70,6 +71,12 @@ router.post("/", function (req, res, next) {
     */
   });
 });
+
+router.post("/scores", function(req, res){
+  User.updateScoreUser(req.body.username, req.body.score1, req.body.score2, req.body.score3);
+  const user = User.getUserFromList(req.body.username);
+  return res.json(user);
+})
 
 /* GET user object from username */
 router.get("/:username", function (req, res, next) {
