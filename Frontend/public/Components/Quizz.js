@@ -72,7 +72,7 @@ let quizz = `<div class="container">
   
   
   const SCORE_QUESTION = 100;
-  const MAX_QUESTIONS = 1;
+  const MAX_QUESTIONS = 5;
   
         
     
@@ -143,6 +143,7 @@ function getNewQuestion(){
   if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS){
       localStorage.setItem('recentScore',score);
       trierScore(score);
+      window.alert("Fin du quizz, vous allez être redirigé");
       return window.location.assign("/endgame");
   }
 
@@ -259,7 +260,7 @@ function trierScore(score){
 };
 
 const updateScoresData = (userData) => {
-  
+ 
   let user = getUserSessionData();
   
   const userUpdate = {username:userData.username,token:user.token,email:userData.email,score1:userData.score1,score2:userData.score2,score3:userData.score3,isAutenticated: true };
