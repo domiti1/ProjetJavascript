@@ -16,7 +16,7 @@ let selector =
                                 
                                 
                                         <div class="m-2">
-                                        <button type="button" class="btn btn-secondary btn-lg" id="div_orange_smoother" onclick="window.location.href='/quizz';localStorage.setItem('cat','Anime')">Anime/Manga</button>
+                                        <button type="button" class="btn btn-secondary btn-lg" id="div_orange_smoother" onclick="window.location.href='/quizz';localStorage.setItem('cat','Manga')">Anime/Manga</button>
                                         </div>
                             
                             
