@@ -6,6 +6,7 @@ import ErrorPage from "./ErrorPage.js";
 import QuizzPage from "./Quizz.js";
 import AccueilPage from "./AccueilPage.js";
 import Selector from "./Selector.js";
+import EndGame from "./EndGame.js";
 
 
 const routes = {
@@ -16,7 +17,8 @@ const routes = {
   "/logout": LogoutComponent,
   "/error": ErrorPage,
   "/quizz": QuizzPage,
-  "/selector": Selector
+  "/selector": Selector,
+  "/endgame": EndGame
 };
 
 let page = document.querySelector("#page");

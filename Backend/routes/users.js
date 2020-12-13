@@ -76,9 +76,21 @@ router.post("/scores", function(req, res){
   console.log("arrive ici");
   console.log(req.body.username, req.body.score1, req.body.score2, req.body.score3);
   User.updateScoreUser(req.body.username, req.body.score1, req.body.score2, req.body.score3);
-  
-  const user = User.getUserFromList(req.body.username);
-  return res.json(user);
+  //Token
+  jwt.sign(
+    { username: newUser.username },
+    jwtSecret,
+    { expiresIn: LIFETIME_JWT },
+    (err, token) => {
+      if (err) {
+        console.error("POST scores/ :", err);
+        return res.status(500).send(err.message);
+      }
+      console.log("POST scores/ token:", token);
+      return res.json({ username: user.username, token: token, score1: user.score1, score2: user.score2, score3: user.score3});
+    }
+  );
+  return res.json({ username: user.username, token: token, score1: user.score1, score2: user.score2, score3: user.score3})
 });
 
 /* GET user object from username */

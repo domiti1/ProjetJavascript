@@ -1,6 +1,9 @@
 import { RedirectUrl } from "./Router.js";
-import { getUserSessionData } from "../utils/session.js";
+import { getUserSessionData,setUserSessionData } from "../utils/session.js";
 import { API_URL } from "../utils/server.js";
+
+
+
 
 let quizz = `<div class="container">
     <div class="justify-center flex-column">
@@ -69,7 +72,7 @@ let quizz = `<div class="container">
   
   
   const SCORE_QUESTION = 100;
-  const MAX_QUESTIONS = 4;
+  const MAX_QUESTIONS = 1;
   
         
     
@@ -140,8 +143,7 @@ function getNewQuestion(){
   if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS){
       localStorage.setItem('recentScore',score);
       trierScore(score);
-      window.alert("Félicitation !! Vous avez obtenu un score de "+score);
-      return window.window.location.assign("./accueil");
+      return window.location.assign("/endgame");
   }
 
   progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
@@ -157,7 +159,7 @@ function getNewQuestion(){
   // showing all 4 possible answers
   choices.forEach(choice => {
       choice.innerText = arrayValueJson[count];
-      console.log(currentQuestion);
+      
       count ++;
   });
 
@@ -245,14 +247,23 @@ function trierScore(score){
     headers: {
       "Content-Type": "application/json",
     },
+  }).then((response) => {
+    if (!response.ok)
+      throw new Error(
+        "Error code : " + response.status + " : " + response.statusText
+      );
+   
+    return response.json();
   }).then((data) => updateScoresData(data))
   .catch((err) => onError(err));
 };
 
 const updateScoresData = (userData) => {
-  console.log("updatingScoreData:", userData);
-  const user = { ...userData, isAutenticated: true };
-  setUserSessionData(user);
+  
+  let user = getUserSessionData();
+  
+  const userUpdate = {username:userData.username,token:user.token,email:userData.email,score1:userData.score1,score2:userData.score2,score3:userData.score3,isAutenticated: true };
+  setUserSessionData(userUpdate);
   // re-render the navbar for the authenticated user
 };
  

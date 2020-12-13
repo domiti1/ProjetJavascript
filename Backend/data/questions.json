@@ -8,7 +8,7 @@
     { "id":7 ,"title":"Quel est la ville la plus peuplée au monde ?" ,"categorie":"Geographie","reponse1":"Tokyo","reponse2":"New York","reponse3":"Shangai","reponse4":"Pékin","reponseCorrecte":"Tokyo" },
     { "id":8 ,"title":"Dans quel océan se trouve le triangle des Bermudes" ,"categorie":"Geographie","reponse1":"Océan Pacifique","reponse2":"Océan Atlantique","reponse3":"Océan Indien","reponse4":"Aucun des 3","reponseCorrecte":"Océan Atlantique" },
     { "id":9 ,"title":"Dans quel pays n'y a-t-il aucune rivière ?" ,"categorie":"Geographie","reponse1":"Bahamas","reponse2":"Inde","reponse3":"Luxembourg","reponse4":"Cape Vert","reponseCorrecte":"Bahamas" },
-    { "id":10 ,"title":"Quel est la capitale du Canada ?" ,"categorie":"Geographie","reponse1":"Toronto","reponse2":"Ottawa","reponse3":"Montréal","reponse4":"Calgary","reponseCorrecte":"" },
+    { "id":10 ,"title":"Quel est la capitale du Canada ?" ,"categorie":"Geographie","reponse1":"Toronto","reponse2":"Ottawa","reponse3":"Montréal","reponse4":"Calgary","reponseCorrecte":"Ottawa" },
     { "id":11 ,"title":"Quel est le plus grand pays entre " ,"categorie":"Geographie","reponse1":"Le Canada","reponse2":"La France","reponse3":"Les Etats-Unis","reponse4":"Le Mexique","reponseCorrecte":"Le Canada" },
     { "id":12 ,"title":"Dans lequel de ces pays ne parle-t-on pas néerlandais ?" ,"categorie":"Geographie","reponse1":"Pays-Bas","reponse2":"Angola","reponse3":"Belgique","reponse4":"Suriname","reponseCorrecte":"Angola" },
     { "id":13 ,"title":"Dans lequel de ces pays ne parle-t-on pas portugais ?" ,"categorie":"Geographie","reponse1":"Portugal","reponse2":"Brésil","reponse3":"Bénin","reponse4":"Mozambique","reponseCorrecte":"Bénin" },

@@ -11,7 +11,7 @@ function setLayout(headerTitle, pageTitle, footerText) {
   document.querySelector("#headerTitle").innerText = headerTitle;
   document.querySelector("title").innerText = pageTitle;
   document.querySelector("#footerText").innerText = footerText;
-  document.querySelector("#pageTitle").innerText = pageTitle;
+  //document.querySelector("#pageTitle").innerText = pageTitle;
   
 }
 // named export
