@@ -69,7 +69,7 @@ let quizz = `<div class="container">
   
   
   const SCORE_QUESTION = 100;
-  const MAX_QUESTIONS = 4;
+  const MAX_QUESTIONS = 5;
   
         
     
