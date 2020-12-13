@@ -19,12 +19,13 @@ let registerPage = `
           <input class="form-control" id="email" type="text" name="email" placeholder="Entrez votre adresse email" required="" pattern="^\\w+([.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,4})+\$" />
         </div>
         <div class="form-group fadeIn third">
-          <p><label for="password">Mot de passe</label></p>
+          <p><label for="password">Mot de passe (Doit contenir une majuscule au début)</label></p>
           <input class="form-control" id="password" type="password" name="password" placeholder="Entrez votre mot de passe" required="" pattern=".*[A-Z]+.*" />
         </div>
         <div class="alert alert-danger mt-2 d-none" id="messageBoard"></div><span id="errorMessage"></span>
         <button class="btn btn-primary m-2 fadeIn third" id="btn" type="submit">Je m'inscris !</button>
-        <!-- Create an alert component with bootstrap that is not displayed by default-->
+        <p><cite>En cliquant sur "Je m'inscris", <br>vous acceptez que votre adresse email soit utilisé dans le cadre du site.<br> Aucune donnée ne sera transmise en dehors de celui-ci.</cite></p>
+       
         
         </form>
     </div>
@@ -59,6 +60,7 @@ const onRegister = (e) => {
         throw new Error(
           "Error code : " + response.status + " : " + response.statusText
         );
+      
       return response.json();
     })
     .then((data) => onUserRegistration(data))
@@ -71,7 +73,7 @@ const onUserRegistration = (userData) => {
   setUserSessionData(user);
   // re-render the navbar for the authenticated user
   Navbar();
-  RedirectUrl("/list");
+  RedirectUrl("/accueil");
 };
 
 const onError = (err) => {

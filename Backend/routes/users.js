@@ -40,40 +40,28 @@ router.post("/login", function (req, res, next) {
 
 /* POST a new user */
 router.post("/", function (req, res, next) {
-  console.log("POST users/", User.list);
+  console.log("Rentre ici");
+  
   console.log("email:", req.body.email);
-  if (User.isUser(req.body.email)) return res.status(409).end();
-  let newUser = new User(req.body.email, req.body.email, req.body.password,0 , 0, 0);
+  if (User.isUser(req.body.email))
+    return res.status(409).end();
+  let newUser = new User(req.body.email, req.body.email, req.body.password,0,0,0);
+  console.log(newUser);
   newUser.save().then(() => {
     console.log("afterRegisterOp:", User.list);
-    jwt.sign(
-      { username: newUser.username },
-      jwtSecret,
-      { expiresIn: LIFETIME_JWT },
-      (err, token) => {
-        if (err) {
-          console.error("POST users/ :", err);
-          return res.status(500).send(err.message);
-        }
-        console.log("POST users/ token:", token);
-        return res.json({ username: user.username, token: token, score1: user.score1, score2: user.score2, score3: user.score3});
-      }
-    );
-    /* Example on how to create and use your own asynchronous function (signAsynchronous())
-    signAsynchronous(newUser, (err, token) => {
+    jwt.sign({ username: newUser.username}, jwtSecret,{ expiresIn: LIFETIME_JWT }, (err, token) => {
       if (err) {
         console.error("POST users/ :", err);
         return res.status(500).send(err.message);
-      }
+      }else{
       console.log("POST users/ token:", token);
-      return res.json({ username: req.body.email, token });
+      return res.json({ username: newUser.username, token,score1 :newUser.score1,score2:newUser.score2,score3 :newUser.score3 });}
     });
-    */
   });
 });
 
 router.post("/scores", function(req, res){
-  console.log("arrive ici");
+  
   console.log(req.body.username, req.body.score1, req.body.score2, req.body.score3);
   User.updateScoreUser(req.body.username, req.body.score1, req.body.score2, req.body.score3);
   let user = User.getUserFromList(req.body.username);
