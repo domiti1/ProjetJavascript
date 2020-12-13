@@ -72,7 +72,7 @@ let quizz = `<div class="container">
   
   
   const SCORE_QUESTION = 100;
-  const MAX_QUESTIONS = 5;
+  const MAX_QUESTIONS = 3;
   
         
     
@@ -260,7 +260,7 @@ function trierScore(score){
 };
 
 const updateScoresData = (userData) => {
- 
+  
   let user = getUserSessionData();
   
   const userUpdate = {username:userData.username,token:user.token,email:userData.email,score1:userData.score1,score2:userData.score2,score3:userData.score3,isAutenticated: true };
