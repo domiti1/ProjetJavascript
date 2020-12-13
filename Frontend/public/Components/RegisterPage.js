@@ -40,7 +40,6 @@ const RegisterPage = () => {
   let registerForm = document.querySelector("form");
   registerForm.addEventListener("submit", onRegister);
 };
-
 const onRegister = (e) => {
   e.preventDefault();
   let user = {
@@ -72,7 +71,7 @@ const onUserRegistration = (userData) => {
   setUserSessionData(user);
   // re-render the navbar for the authenticated user
   Navbar();
-  RedirectUrl("/accueil");
+  RedirectUrl("/list");
 };
 
 const onError = (err) => {
