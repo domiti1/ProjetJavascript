@@ -62,7 +62,8 @@ const AccueilPage = () => {
  
     page.innerHTML = accueilPage;
     let recentScore = document.querySelector('#recentScore');
-    recentScore.innerText = localStorage.getItem('scoreUn');
+    
+    recentScore.innerText = user.score1;
     /***************************************************************************************
     *    Title: Moving Letters
     *    Author: @tobiasahlin

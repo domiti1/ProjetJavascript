@@ -72,7 +72,7 @@ const onUserRegistration = (userData) => {
   setUserSessionData(user);
   // re-render the navbar for the authenticated user
   Navbar();
-  RedirectUrl("/list");
+  RedirectUrl("/accueil");
 };
 
 const onError = (err) => {

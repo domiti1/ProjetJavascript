@@ -73,10 +73,13 @@ router.post("/", function (req, res, next) {
 });
 
 router.post("/scores", function(req, res){
+  console.log("arrive ici");
+  console.log(req.body.username, req.body.score1, req.body.score2, req.body.score3);
   User.updateScoreUser(req.body.username, req.body.score1, req.body.score2, req.body.score3);
+  
   const user = User.getUserFromList(req.body.username);
   return res.json(user);
-})
+});
 
 /* GET user object from username */
 router.get("/:username", function (req, res, next) {

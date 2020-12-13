@@ -69,7 +69,7 @@ let quizz = `<div class="container">
   
   
   const SCORE_QUESTION = 100;
-  const MAX_QUESTIONS = 5;
+  const MAX_QUESTIONS = 4;
   
         
     
@@ -90,7 +90,7 @@ const Quizz = () => {
   progressText = document.querySelector('#progressText');
   scoreText = document.querySelector('#score');
   progressBarFull = document.querySelector('#progressBarFull');
-   
+  
 };
 
 function getListCat(categorie){
@@ -116,9 +116,6 @@ function getListCat(categorie){
     .catch((err) => onError(err))
     .then(startGame)
   };
-
-  //QUESTION ICI
-  //Récuperer le res.json(questionFound) qui est un tableau et l'assigner au tableau questions
   const toQuestionList = (data) => {
   
     questions.push(data);
@@ -136,13 +133,14 @@ function startGame(){
   score = 0;
   availableQuestions = [...questions];
   getNewQuestion();
+ 
 }
 
 function getNewQuestion(){
   if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS){
       localStorage.setItem('recentScore',score);
       trierScore(score);
-      window.alert("Félicitation !! Vous avez obtenu un score de "+localStorage.getItem('recentScore'));
+      window.alert("Félicitation !! Vous avez obtenu un score de "+score);
       return window.window.location.assign("./accueil");
   }
 
@@ -206,46 +204,59 @@ function incrementScore(num){
 
 //function for order 3 first score of user
 function trierScore(score){
-  let premierMeilleurScore = localStorage.getItem('scoreUn');
-  let secondMeilleurScore = localStorage.getItem('scoreDeux');
-  let troisiemeMeilleurScore = localStorage.getItem('scoreTrois');
+  let username = getUserSessionData()
+  let premierMeilleurScore = username.score1;
+  let secondMeilleurScore = username.score2;
+  let troisiemeMeilleurScore = username.score3;
   //si plus petit on fait rien
   if(troisiemeMeilleurScore>score){
-    return;
+    
   }
   //Si entre 3 et 2 : il prend la place du troisieme
   else if(score>troisiemeMeilleurScore && score<=secondMeilleurScore){
-    localStorage.setItem('scoreTrois',score);
-    return;
+    troisiemeMeilleurScore=score;
+    
   //Si entre 1 et 2 il prend la place de 2 et 2 prend la place de 3
   }else if(score>secondMeilleurScore && score<=premierMeilleurScore){
-    localStorage.setItem('scoreDeux',score);
-    localStorage.setItem('scoreTrois',secondMeilleurScore);
-    return;
+    let tmp = secondMeilleurScore;
+    secondMeilleurScore = score;
+    troisiemeMeilleurScore = tmp;
+    
   //Si plus grand de 1 : 1 prend la place de 2 et 2 prend la place de 3
   }else if(score>premierMeilleurScore){
-    localStorage.setItem('scoreUn',score);
-    localStorage.setItem('scoreDeux',premierMeilleurScore);
-    localStorage.setItem('scoreTrois',secondMeilleurScore);
-    return;
+    let tmp = premierMeilleurScore;
+    let tmp2 = secondMeilleurScore;
+    premierMeilleurScore= score;
+    secondMeilleurScore = tmp;
+    troisiemeMeilleurScore = tmp2; 
   }
 
   let scoresUser = {
-    username: getUserSessionData(),
-    score1: localStorage.getItem('scoreUn'),
-    score2: localStorage.getItem('scoreDeux'),
-    score3: localStorage.getItem('scoreTrois')
+    username: username.username,
+    score1: premierMeilleurScore,
+    score2: secondMeilleurScore,
+    score3: troisiemeMeilleurScore
   }
 
   fetch(API_URL + "users/scores", {
     method: "POST", // *GET, POST, PUT, DELETE, etc.
+    async:false,
     body: JSON.stringify(scoresUser), // body data type must match "Content-Type" header
     headers: {
       "Content-Type": "application/json",
     },
-  });
+  }).then((data) => updateScoresData(data))
+  .catch((err) => onError(err));
+};
+
+const updateScoresData = (userData) => {
+  console.log("updatingScoreData:", userData);
+  const user = { ...userData, isAutenticated: true };
+  setUserSessionData(user);
+  // re-render the navbar for the authenticated user
+};
  
-}
+
 
 
 const onError = (err) => {

@@ -75,6 +75,7 @@ class User {
       }
     }
     saveUserListToFile(FILE_PATH, userList);
+    
     return userList;
   }
 }
