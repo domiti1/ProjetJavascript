@@ -126,7 +126,7 @@ function getListCat(categorie){
       
           questions.push(data[i]);
 
-      }
+    }
     return questions;
   }
 
@@ -142,14 +142,14 @@ function getNewQuestion(){
   if(availableQuestions.length === 0 || questionCounter > MAX_QUESTIONS){
       localStorage.setItem('recentScore',score);
       trierScore(score);
-      window.alert("Féliciation vous avez obtenu un score de "+localStorage.getItem('recentScore'));
+      window.alert("Félicitation !! Vous avez obtenu un score de "+localStorage.getItem('recentScore'));
       return window.window.location.assign("./accueil");
   }
 
   progressText.innerText = `Question ${questionCounter} of ${MAX_QUESTIONS}`;
   progressBarFull.style.width = `${(questionCounter/MAX_QUESTIONS)*100}%`;
 
-  const questionsIndex = Math.floor(Math.random()*availableQuestions.length);
+  const questionsIndex = (Math.floor(Math.random()*(availableQuestions.length-1)))+1;
   currentQuestion = availableQuestions[questionsIndex];
   question.innerText = currentQuestion.title;
 
@@ -214,11 +214,11 @@ function trierScore(score){
     return;
   }
   //Si entre 3 et 2 : il prend la place du troisieme
-  else if(score>troisiemeMeilleurScore && score<secondMeilleurScore){
+  else if(score>troisiemeMeilleurScore && score<=secondMeilleurScore){
     localStorage.setItem('scoreTrois',score);
     return;
   //Si entre 1 et 2 il prend la place de 2 et 2 prend la place de 3
-  }else if(score>secondMeilleurScore && score<premierMeilleurScore){
+  }else if(score>secondMeilleurScore && score<=premierMeilleurScore){
     localStorage.setItem('scoreDeux',score);
     localStorage.setItem('scoreTrois',secondMeilleurScore);
     return;
@@ -229,6 +229,21 @@ function trierScore(score){
     localStorage.setItem('scoreTrois',secondMeilleurScore);
     return;
   }
+
+  let scoresUser = {
+    username: getUserSessionData(),
+    score1: localStorage.getItem('scoreUn'),
+    score2: localStorage.getItem('scoreDeux'),
+    score3: localStorage.getItem('scoreTrois')
+  }
+
+  fetch(API_URL + "users/scores", {
+    method: "POST", // *GET, POST, PUT, DELETE, etc.
+    body: JSON.stringify(scoresUser), // body data type must match "Content-Type" header
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
  
 }
 

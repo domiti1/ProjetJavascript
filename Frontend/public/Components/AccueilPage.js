@@ -9,17 +9,6 @@ const AccueilPage = () => {
         accueilPage =`<div class="container">
         <div class="row mt-3">
     
-        
-            <div class="col m-5">
-
-                <div class="col m-1 border border-5 border-dark rounded text-center" id="div_violet_darker">
-                <div class="m-3" id="button_title">Meilleurs scores</div>
-                </div>
-                <div class="mb-2 text-center" id="text_white">Nathan 139</div>
-                <div class="mb-2 text-center" id="text_white">Didier 130</div>
-                <div class="mb-2 text-center" id="text_white">Arnaud 129</div>
-            </div>
-
             <div class="col m-4">
             <h1 class="ml10 accueilPage_text">
             <span class="text-wrapper">
@@ -32,7 +21,7 @@ const AccueilPage = () => {
             <div class="col m-5">
 
             <div class="col m-1 border border-5 border-dark rounded text-center" id="div_violet_darker">
-            <div class="m-3" id="button_title">Mes scores</div>
+            <div class="m-3" id="button_title">Mes meilleurs scores</div>
             </div>
                 <div class="mb-2 text-center" id="recentScore"></div>
             </div>
@@ -73,7 +62,7 @@ const AccueilPage = () => {
  
     page.innerHTML = accueilPage;
     let recentScore = document.querySelector('#recentScore');
-    recentScore.innerText = localStorage.getItem('recentScore');
+    recentScore.innerText = localStorage.getItem('scoreUn');
     /***************************************************************************************
     *    Title: Moving Letters
     *    Author: @tobiasahlin

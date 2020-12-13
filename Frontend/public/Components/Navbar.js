@@ -3,8 +3,13 @@ import {getUserSessionData} from "../utils/session.js";
 // destructuring assignment
 const Navbar = () => {
   let navbar;
-  let user = getUserSessionData();    
+  let user = getUserSessionData();
+
   if (user) {
+      
+    localStorage.setItem('scoreUn',user.score1);
+    localStorage.setItem('scoreDeux',user.score2);
+    localStorage.setItem('scoreTrois',user.score3);
     navbar = `<nav class="navbar navbar-expand-lg navbar-light navBar_colors mb-2" id="navBar">
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav" id="navBar_text">
